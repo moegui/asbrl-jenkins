@@ -1,0 +1,15 @@
+---
+JENKINS_HOME: "/var/jenkins_home"
+HTTP_PORT: "8080"
+AGENT_PORT: "50000"
+EXECUTORS: "2"
+ROOT_USER: "super"
+ROOT_PASS: "s3cur3"
+TZ: 'Etc/GMT'
+# GIT_SEED: ""
+CASC_JENKINS_CONFIG: "/tmp/jenkins.yml"
+JENKINS_URL: "http://localhost:8080"
+JENKINS_EMAIL: "devops@localhost.com"
+JENKINS_SEEDER: "dsl_job_seeder"
+# JENKINS_SSH_KEY: ""
+JENKINS_SSH_NAME: "git"

@@ -46,7 +46,7 @@
 - name: Jenkins
   docker_container:
     name: "jenkins"
-    image: devops/jenkins:"{{JENKINS_VERSION}}"
+    image: devops/jenkins:{{JENKINS_VERSION}}
     pull: "false"
     recreate: "yes"
     state: "started"
@@ -60,4 +60,4 @@
     #   - "0.0.0.0:{{ AGENT_PORT }}:{{ AGENT_PORT }}"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - jenkins_home:{{ JENKINS_HOME }}
+      - jenkins_home:{{JENKINS_HOME}}

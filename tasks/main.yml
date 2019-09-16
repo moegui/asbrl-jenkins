@@ -2,11 +2,11 @@
 - name: Copy Jenkins files to host/s
   copy:
     src: "{{JENKINS_VERSION}}"
-    dest: /tmp/jenkins/
+    dest: /tmp/jenkins
 
 - name: Build Jenkins CI Image in host/s
   docker_image:
-    path: "/tmp/jenkins/"
+    path: "/tmp/jenkins/{{JENKINS_VERSION}}"
     name: "devops/jenkins"
     nocache: true
     state: "present"
@@ -47,6 +47,7 @@
 - name: Jenkins
   docker_container:
     name: "jenkins"
+    user: "{{USER|default(omit)}}"
     image: devops/jenkins:{{JENKINS_VERSION}}
     pull: "false"
     recreate: "yes"
@@ -56,9 +57,6 @@
     env:
       TZ: "{{ TZ }}"
     restart_policy: "unless-stopped"
-    # published_ports:
-    #   - "0.0.0.0:{{ HTTP_PORT }}:{{ HTTP_PORT }}"
-    #   - "0.0.0.0:{{ AGENT_PORT }}:{{ AGENT_PORT }}"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - jenkins_home:{{JENKINS_HOME}}

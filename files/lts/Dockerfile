@@ -26,3 +26,5 @@ RUN install-plugins.sh git \
                        configuration-as-code \
                        docker-workflow \
                        job-dsl
+
+EXPOSE ${HTTP_PORT}/tcp ${AGENT_PORT}/tcp

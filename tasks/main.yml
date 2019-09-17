@@ -26,6 +26,8 @@
       JENKINS_SEEDER: "{{JENKINS_SEEDER}}"
       JENKINS_SSH_KEY: "{{JENKINS_SSH_KEY}}"
       JENKINS_SSH_NAME: "{{JENKINS_SSH_NAME}}"
+      DOCKER_USER_NAME: "{{DOCKER_USER_NAME}}"
+      DOCKER_USER_PASS: "{{DOCKER_USER_PASS}}"
     tag: "{{JENKINS_VERSION}}"
     force: true
     push: false

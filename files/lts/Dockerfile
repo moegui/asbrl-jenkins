@@ -40,6 +40,7 @@ RUN apt-get update && \
     ca-certificates \
     curl \
     gnupg2 \
+    rsync \
     software-properties-common -y
 
 RUN curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add -

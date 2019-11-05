@@ -39,7 +39,7 @@
     force: true
     push: false
     pull: true
-  when: ansible_os_family == "Windows"
+  when: ansible_os_family != "Windows"
 
 - name: Jenkins Data Volume
   docker_volume:
@@ -71,4 +71,4 @@
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - jenkins_home:{{JENKINS_HOME}}
-  when: ansible_os_family == "Windows"
+  when: ansible_os_family != "Windows"

@@ -18,27 +18,28 @@
     nocache: true
     state: "present"
     rm: true
-    # buildargs:
-    #   JENKINS_HOME: "{{JENKINS_HOME}}"
-    #   HTTP_PORT: "{{HTTP_PORT}}"
-    #   AGENT_PORT: "{{AGENT_PORT}}"
-    #   EXECUTORS: "{{EXECUTORS}}"
-    #   ROOT_PASS: "{{ROOT_PASS}}"
-    #   ROOT_USER: "{{ROOT_USER}}"
-    #   GIT_SEED: "{{GIT_SEED}}"
-    #   JENKINS_OPTS: "{{JENKINS_OPTS}}"
-    #   CASC_JENKINS_CONFIG: "{{CASC_JENKINS_CONFIG}}"
-    #   JENKINS_URL: "{{JENKINS_URL}}"
-    #   JENKINS_EMAIL: "{{JENKINS_EMAIL}}"
-    #   JENKINS_SEEDER: "{{JENKINS_SEEDER}}"
-    #   JENKINS_SSH_KEY: "{{JENKINS_SSH_KEY}}"
-    #   JENKINS_SSH_NAME: "{{JENKINS_SSH_NAME}}"
-    #   DOCKER_USER_NAME: "{{DOCKER_USER_NAME}}"
-    #   DOCKER_USER_PASS: "{{DOCKER_USER_PASS}}"
+    buildargs:
+      JENKINS_HOME: "{{JENKINS_HOME}}"
+      HTTP_PORT: "{{HTTP_PORT}}"
+      AGENT_PORT: "{{AGENT_PORT}}"
+      EXECUTORS: "{{EXECUTORS}}"
+      ROOT_PASS: "{{ROOT_PASS}}"
+      ROOT_USER: "{{ROOT_USER}}"
+      GIT_SEED: "{{GIT_SEED}}"
+      JENKINS_OPTS: "{{JENKINS_OPTS}}"
+      CASC_JENKINS_CONFIG: "{{CASC_JENKINS_CONFIG}}"
+      JENKINS_URL: "{{JENKINS_URL}}"
+      JENKINS_EMAIL: "{{JENKINS_EMAIL}}"
+      JENKINS_SEEDER: "{{JENKINS_SEEDER}}"
+      JENKINS_SSH_KEY: "{{JENKINS_SSH_KEY}}"
+      JENKINS_SSH_NAME: "{{JENKINS_SSH_NAME}}"
+      DOCKER_USER_NAME: "{{DOCKER_USER_NAME}}"
+      DOCKER_USER_PASS: "{{DOCKER_USER_PASS}}"
     tag: "{{JENKINS_VERSION}}"
     force: true
     push: false
     pull: true
+  when: ansible_os_family == "Windows"
 
 - name: Jenkins Data Volume
   docker_volume:
@@ -70,3 +71,4 @@
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - jenkins_home:{{JENKINS_HOME}}
+  when: ansible_os_family == "Windows"

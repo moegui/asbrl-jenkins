@@ -17,8 +17,6 @@ RUN mkdir \jenkins_home
 RUN mkdir \jenkins_home\workspace
 RUN mkdir \jenkins_home\plugins
 
-COPY jenkins.yml ${CASC_JENKINS_CONFIG}
-
 RUN "[Net.ServicePointManager]::SecurityProtocol = 'TLS11','TLS12','ssl3'" ; \
     Invoke-WebRequest -Uri ${env:JENKINS_URL} -OutFile \jenkins_home\jenkins.war ;
 
@@ -52,7 +50,8 @@ RUN "[Net.ServicePointManager]::SecurityProtocol = 'TLS11','TLS12','ssl3'" ; \
     Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/configuration-as-code/1.32/configuration-as-code.hpi -OutFile /jenkins_home/plugins/configuration-as-code.hpi ;
     
 
-#COPY home \jenkins_home
+COPY jenkins.yml ${CASC_JENKINS_CONFIG}
+
 EXPOSE ${http_port}
 EXPOSE ${agent_port}
 

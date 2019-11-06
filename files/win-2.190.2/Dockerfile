@@ -36,7 +36,7 @@ RUN "[Net.ServicePointManager]::SecurityProtocol = 'TLS11','TLS12','ssl3'" ; \
     Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/junit/1.27/junit.hpi -OutFile /jenkins_home/plugins/junit.jpi ; \
     Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/mailer/1.23/mailer.hpi -OutFile /jenkins_home/plugins/mailer.jpi ; \
     Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/matrix-project/1.14/matrix-project.hpi -OutFile /jenkins_home/plugins/matrix-project.jpi ; \
-    Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/scm-api/2.3.0/scm-api.hpi -OutFile /jenkins_home/plugins/scm-api.jpi ; \
+    Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/scm-api/2.6.3/scm-api.hpi -OutFile /jenkins_home/plugins/scm-api.jpi ; \
     Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/script-security/1.66/script-security.hpi -OutFile /jenkins_home/plugins/script-security.jpi ; \
     Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/ssh-credentials/1.18/ssh-credentials.hpi  -OutFile /jenkins_home/plugins/ssh-credentials.jpi ; \
     Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/structs/1.17/structs.hpi -OutFile /jenkins_home/plugins/structs.jpi ; \
@@ -62,6 +62,10 @@ RUN "[Net.ServicePointManager]::SecurityProtocol = 'TLS11','TLS12','ssl3'" ; \
     Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/workflow-cps-global-lib/2.15/workflow-cps-global-lib.hpi -OutFile /jenkins_home/plugins/workflow-cps-global-lib.jpi ; \
     Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/workflow-multibranch/2.21/workflow-multibranch.hpi -OutFile /jenkins_home/plugins/workflow-multibranch.jpi ; \
     Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/trilead-api/1.0.5/trilead-api.hpi -OutFile /jenkins_home/plugins/trilead-api.jpi ; \
+    Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/git-server/1.8/git-server.hpi -OutFile /jenkins_home/plugins/git-server.jpi ; \
+    Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/cloudbees-folder/6.9/cloudbees-folder.hpi -OutFile /jenkins_home/plugins/cloudbees-folder.jpi ; \
+    Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/branch-api/2.5.4/branch-api.hpi -OutFile /jenkins_home/plugins/branch-api.jpi ; \
+    Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/workflow-job/2.36/workflow-job.hpi -OutFile /jenkins_home/plugins/workflow-job.jpi ; \
     Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/configuration-as-code/1.32/configuration-as-code.hpi -OutFile /jenkins_home/plugins/configuration-as-code.jpi ;
 COPY jenkins.yml ${CASC_JENKINS_CONFIG}
 

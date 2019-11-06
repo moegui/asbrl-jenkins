@@ -42,7 +42,7 @@
   when: ansible_os_family != "Windows"
 
 - name: Build Jenkins CI Image in host/s (windows)
--  win_shell: "docker build -t devops/jenkins /tmp/jenkins/{{JENKINS_VERSION}}/."
+  win_shell: "docker build -t devops/jenkins /tmp/jenkins/{{JENKINS_VERSION}}/."
   when: ansible_os_family == "Windows"
 
 - name: Jenkins Data Volume  (linux)
@@ -80,6 +80,4 @@
 
 - name: Jenkins (windows)
   win_shell: "docker run --name jenkins -p {{HTTP_PORT}}:8080 -d devops/jenkins"
-  args:
-    executable: cmd
   when: ansible_os_family == "Windows"

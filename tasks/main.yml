@@ -11,10 +11,11 @@
     dest: /tmp/jenkins
   when: ansible_os_family == "Windows"
 
-- name: Create jenkins.yml Template
+- name: Create jenkins.yml Template (windows)
   template:
     src: jenkins.yml.j2
     dest: "/tmp/jenkins/{{JENKINS_VERSION}}/jenkins.yml"
+  when: ansible_os_family == "Windows"
 
 - name: Build Jenkins CI Image in host/s (linux)
   docker_image:

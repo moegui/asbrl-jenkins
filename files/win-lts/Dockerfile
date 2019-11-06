@@ -1,8 +1,8 @@
 FROM openjdk:11.0.5-windowsservercore-1809
 
 ARG JENKINS_VERSION
-ENV JENKINS_VERSION ${JENKINS_VERSION:-2.190.2}
-ARG JENKINS_URL=https://repo.jenkins-ci.org/public/org/jenkins-ci/main/jenkins-war/${JENKINS_VERSION}/jenkins-war-${JENKINS_VERSION}.war
+ENV JENKINS_VERSION ${JENKINS_VERSION:-latest}
+ARG JENKINS_URL=https://updates.jenkins.io/${JENKINS_VERSION}/jenkins.war
 ENV HOME /jenkins_home
 ARG JENKINS_HOME=\jenkins_home
 ENV JENKINS_HOME $JENKINS_HOME

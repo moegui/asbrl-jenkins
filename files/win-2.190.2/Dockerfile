@@ -66,6 +66,11 @@ RUN "[Net.ServicePointManager]::SecurityProtocol = 'TLS11','TLS12','ssl3'" ; \
     Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/cloudbees-folder/6.9/cloudbees-folder.hpi -OutFile /jenkins_home/plugins/cloudbees-folder.jpi ; \
     Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/branch-api/2.5.4/branch-api.hpi -OutFile /jenkins_home/plugins/branch-api.jpi ; \
     Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/workflow-job/2.36/workflow-job.hpi -OutFile /jenkins_home/plugins/workflow-job.jpi ; \
+    Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/pipeline-stage-step/2.3/pipeline-stage-step.hpi -OutFile /jenkins_home/plugins/pipeline-stage-step.jpi ; \
+    Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/pipeline-stage-tags-metadata/1.4.0/pipeline-stage-tags-metadata.hpi -OutFile /jenkins_home/plugins/pipeline-stage-tags-metadata.jpi ; \
+    Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/pipeline-input-step/2.11/pipeline-input-step.hpi -OutFile /jenkins_home/plugins/pipeline-input-step.jpi ; \
+    Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/pipeline-model-declarative-agent/1.1.1/pipeline-model-declarative-agent.hpi -OutFile /jenkins_home/plugins/pipeline-model-declarative-agent.jpi ; \
+    Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/pipeline-model-extensions/1.4.0/pipeline-model-extensions.hpi -OutFile /jenkins_home/plugins/pipeline-model-extensions.jpi ; \
     Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/configuration-as-code/1.32/configuration-as-code.hpi -OutFile /jenkins_home/plugins/configuration-as-code.jpi ;
 COPY jenkins.yml ${CASC_JENKINS_CONFIG}
 

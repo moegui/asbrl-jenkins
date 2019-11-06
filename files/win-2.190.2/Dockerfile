@@ -52,7 +52,7 @@ RUN "[Net.ServicePointManager]::SecurityProtocol = 'TLS11','TLS12','ssl3'" ; \
     Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/workflow-support/3.3/workflow-support.hpi -OutFile /jenkins_home/plugins/workflow-support.jpi ; \
     Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/workflow-basic-steps/2.18/workflow-basic-steps.hpi -OutFile /jenkins_home/plugins/workflow-basic-steps.jpi ; \
     Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/workflow-durable-task-step/2.35/workflow-durable-task-step.hpi -OutFile /jenkins_home/plugins/workflow-durable-task-step.jpi ; \
-    Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/configuration-as-code/1.32/configuration-as-code.hpi -OutFile /jenkins_home/plugins/configuration-as-code.hpi ;
+    Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/configuration-as-code/1.32/configuration-as-code.hpi -OutFile /jenkins_home/plugins/configuration-as-code.jpi ;
     
 COPY jenkins.yml ${CASC_JENKINS_CONFIG}
 

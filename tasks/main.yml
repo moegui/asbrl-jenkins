@@ -42,7 +42,7 @@
   when: ansible_os_family != "Windows"
 
 - name: Build Jenkins CI Image in host/s (windows)
-  win_shell: "docker build -t devops/jenkins /tmp/jenkins/{{JENKINS_VERSION}}/."
+  win_shell: "docker build -t devops/jenkins /tmp/jenkins/{{JENKINS_VERSION}}/. --no-cache"
   when: ansible_os_family == "Windows"
 
 - name: Jenkins Data Volume  (linux)

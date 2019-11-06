@@ -25,31 +25,35 @@ RUN Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Ne
 RUN choco install git -y
 
 RUN "[Net.ServicePointManager]::SecurityProtocol = 'TLS11','TLS12','ssl3'" ; \
-    Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/apache-httpcomponents-client-4-api/4.5.5-3.0/apache-httpcomponents-client-4-api.hpi  -OutFile /jenkins_home/plugins/apache-httpcomponents-client-4-api.hpi ; \
-    Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/bouncycastle-api/2.17/bouncycastle-api.hpi -OutFile /jenkins_home/plugins/bouncycastle-api.hpi ; \
-    Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/command-launcher/1.3/command-launcher.hpi -OutFile /jenkins_home/plugins/command-launcher.hpi ; \
-    Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/credentials/2.1.18/credentials.hpi -OutFile /jenkins_home/plugins/credentials.hpi ; \
-    Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/display-url-api/2.3.0/display-url-api.hpi  -OutFile /jenkins_home/plugins/display-url-api.hpi ; \
-    Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/git/3.9.3/git.hpi -OutFile /jenkins_home/plugins/git.hpi ; \
-    Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/jdk-tool/1.2/jdk-tool.hpi -OutFile /jenkins_home/plugins/jdk-tool.hpi ; \
-    Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/jsch/0.1.55/jsch.hpi -OutFile /jenkins_home/plugins/jsch.hpi ; \
-    Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/junit/1.27/junit.hpi -OutFile /jenkins_home/plugins/junit.hpi ; \
-    Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/mailer/1.23/mailer.hpi -OutFile /jenkins_home/plugins/mailer.hpi ; \
-    Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/matrix-project/1.14/matrix-project.hpi -OutFile /jenkins_home/plugins/matrix-project.hpi ; \
-    Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/scm-api/2.3.0/scm-api.hpi -OutFile /jenkins_home/plugins/scm-api.hpi ; \
-    Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/script-security/1.54/script-security.hpi -OutFile /jenkins_home/plugins/script-security.hpi ; \
-    Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/ssh-credentials/1.15/ssh-credentials.hpi -OutFile /jenkins_home/plugins/ssh-credentials.hpi ; \
-    Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/structs/1.17/structs.hpi -OutFile /jenkins_home/plugins/structs.hpi ; \
-    Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/workflow-api/2.33/workflow-api.hpi -OutFile /jenkins_home/plugins/workflow-api.hpi ; \
-    Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/workflow-scm-step/2.7/workflow-scm-step.hpi -OutFile /jenkins_home/plugins/workflow-scm-step.hpi ; \
-    Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/workflow-step-api/2.19/workflow-step-api.hpi -OutFile /jenkins_home/plugins/workflow-step-api.hpi ; \
-    Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/git-client/2.7.6/git-client.hpi -OutFile /jenkins_home/plugins/git-client.hpi ; \
-    Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/job-dsl/1.76/job-dsl.hpi -OutFile /jenkins_home/plugins/job-dsl.hpi ; \
-    Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/docker-workflow/1.21/docker-workflow.hpi -OutFile /jenkins_home/plugins/docker-workflow.hpi ; \
-    Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/pipeline-model-definition/1.4.0/pipeline-model-definition.hpi -OutFile /jenkins_home/plugins/pipeline-model-definition.hpi ; \
+    Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/apache-httpcomponents-client-4-api/4.5.5-3.0/apache-httpcomponents-client-4-api.hpi  -OutFile /jenkins_home/plugins/apache-httpcomponents-client-4-api.jpi ; \
+    Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/bouncycastle-api/2.17/bouncycastle-api.hpi -OutFile /jenkins_home/plugins/bouncycastle-api.jpi ; \
+    Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/command-launcher/1.3/command-launcher.hpi -OutFile /jenkins_home/plugins/command-launcher.jpi ; \
+    Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/credentials/2.1.18/credentials.hpi -OutFile /jenkins_home/plugins/credentials.jpi ; \
+    Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/display-url-api/2.3.0/display-url-api.hpi  -OutFile /jenkins_home/plugins/display-url-api.jpi ; \
+    Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/git/3.9.3/git.hpi -OutFile /jenkins_home/plugins/git.jpi ; \
+    Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/jdk-tool/1.2/jdk-tool.hpi -OutFile /jenkins_home/plugins/jdk-tool.jpi ; \
+    Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/jsch/0.1.55/jsch.hpi -OutFile /jenkins_home/plugins/jsch.jpi ; \
+    Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/junit/1.27/junit.hpi -OutFile /jenkins_home/plugins/junit.jpi ; \
+    Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/mailer/1.23/mailer.hpi -OutFile /jenkins_home/plugins/mailer.jpi ; \
+    Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/matrix-project/1.14/matrix-project.hpi -OutFile /jenkins_home/plugins/matrix-project.jpi ; \
+    Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/scm-api/2.3.0/scm-api.hpi -OutFile /jenkins_home/plugins/scm-api.jpi ; \
+    Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/script-security/1.54/script-security.hpi -OutFile /jenkins_home/plugins/script-security.jpi ; \
+    Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/ssh-credentials/1.15/ssh-credentials.hpi -OutFile /jenkins_home/plugins/ssh-credentials.jpi ; \
+    Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/structs/1.17/structs.hpi -OutFile /jenkins_home/plugins/structs.jpi ; \
+    Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/workflow-api/2.33/workflow-api.hpi -OutFile /jenkins_home/plugins/workflow-api.jpi ; \
+    Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/workflow-scm-step/2.7/workflow-scm-step.hpi -OutFile /jenkins_home/plugins/workflow-scm-step.jpi ; \
+    Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/workflow-step-api/2.19/workflow-step-api.hpi -OutFile /jenkins_home/plugins/workflow-step-api.jpi ; \
+    Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/git-client/2.7.6/git-client.hpi -OutFile /jenkins_home/plugins/git-client.jpi ; \
+    Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/job-dsl/1.76/job-dsl.hpi -OutFile /jenkins_home/plugins/job-dsl.jpi ; \
+    Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/docker-workflow/1.21/docker-workflow.hpi -OutFile /jenkins_home/plugins/docker-workflow.jpi ; \
+    Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/pipeline-model-definition/1.4.0/pipeline-model-definition.hpi -OutFile /jenkins_home/plugins/pipeline-model-definition.jpi ; \
+    Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/workflow-cps/2.75/workflow-cps.hpi -OutFile /jenkins_home/plugins/workflow-cps.jpi ; \
+    Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/docker-commons/1.15/docker-commons.hpi -OutFile /jenkins_home/plugins/docker-commons.jpi ; \
+    Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/workflow-support/3.3/workflow-support.hpi -OutFile /jenkins_home/plugins/workflow-support.jpi ; \
+    Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/workflow-basic-steps/2.18/workflow-basic-steps.hpi -OutFile /jenkins_home/plugins/workflow-basic-steps.jpi ; \
+    Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/workflow-durable-task-step/2.35/workflow-durable-task-step.hpi -OutFile /jenkins_home/plugins/workflow-durable-task-step.jpi ; \
     Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/configuration-as-code/1.32/configuration-as-code.hpi -OutFile /jenkins_home/plugins/configuration-as-code.hpi ;
     
-
 COPY jenkins.yml ${CASC_JENKINS_CONFIG}
 
 EXPOSE ${http_port}

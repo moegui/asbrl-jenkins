@@ -61,6 +61,7 @@ RUN "[Net.ServicePointManager]::SecurityProtocol = 'TLS11','TLS12','ssl3'" ; \
     Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/plain-credentials/1.5/plain-credentials.hpi -OutFile /jenkins_home/plugins/plain-credentials.jpi ; \
     Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/workflow-cps-global-lib/2.15/workflow-cps-global-lib.hpi -OutFile /jenkins_home/plugins/workflow-cps-global-lib.jpi ; \
     Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/workflow-multibranch/2.21/workflow-multibranch.hpi -OutFile /jenkins_home/plugins/workflow-multibranch.jpi ; \
+    Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/trilead-api/1.0.5/trilead-api.hpi -OutFile /jenkins_home/plugins/trilead-api.jpi ; \
     Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/configuration-as-code/1.32/configuration-as-code.hpi -OutFile /jenkins_home/plugins/configuration-as-code.jpi ;
 COPY jenkins.yml ${CASC_JENKINS_CONFIG}
 

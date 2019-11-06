@@ -42,7 +42,7 @@ RUN "[Net.ServicePointManager]::SecurityProtocol = 'TLS11','TLS12','ssl3'" ; \
     Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/structs/1.17/structs.hpi -OutFile /jenkins_home/plugins/structs.jpi ; \
     Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/workflow-api/2.37/workflow-api.hpi -OutFile /jenkins_home/plugins/workflow-api.jpi ; \
     Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/workflow-scm-step/2.9/workflow-scm-step.hpi -OutFile /jenkins_home/plugins/workflow-scm-step.jpi ; \
-    Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/workflow-step-api/2.19/workflow-step-api.hpi -OutFile /jenkins_home/plugins/workflow-step-api.jpi ; \
+    Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/workflow-step-api/2.20/workflow-step-api.hpi -OutFile /jenkins_home/plugins/workflow-step-api.jpi ; \
     Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/git-client/2.7.6/git-client.hpi -OutFile /jenkins_home/plugins/git-client.jpi ; \
     Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/job-dsl/1.76/job-dsl.hpi -OutFile /jenkins_home/plugins/job-dsl.jpi ; \
     Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/docker-workflow/1.21/docker-workflow.hpi -OutFile /jenkins_home/plugins/docker-workflow.jpi ; \
@@ -54,6 +54,10 @@ RUN "[Net.ServicePointManager]::SecurityProtocol = 'TLS11','TLS12','ssl3'" ; \
     Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/workflow-durable-task-step/2.35/workflow-durable-task-step.hpi -OutFile /jenkins_home/plugins/workflow-durable-task-step.jpi ; \
     Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/ace-editor/1.1/ace-editor.hpi -OutFile /jenkins_home/plugins/ace-editor.jpi ; \
     Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/jquery-detached/1.2.1/jquery-detached.hpi -OutFile /jenkins_home/plugins/jquery-detached.jpi ; \
+    Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/credentials-binding/1.20/credentials-binding.hpi -OutFile /jenkins_home/plugins/credentials-binding.jpi ; \
+    Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/authentication-tokens/1.3/authentication-tokens.hpi -OutFile /jenkins_home/plugins/authentication-tokens.jpi ; \
+    Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/durable-task/1.33/durable-task.hpi -OutFile /jenkins_home/plugins/durable-task.jpi ; \
+    Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/structs/1.20/structs.hpi -OutFile /jenkins_home/plugins/structs.jpi ; \
     Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/configuration-as-code/1.32/configuration-as-code.hpi -OutFile /jenkins_home/plugins/configuration-as-code.jpi ;
     
 COPY jenkins.yml ${CASC_JENKINS_CONFIG}

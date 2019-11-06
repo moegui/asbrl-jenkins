@@ -79,5 +79,7 @@
   when: ansible_os_family != "Windows"
 
 - name: Jenkins (windows)
-  win_shell: "docker run --name jenkins -p {{HTTP_PORT}}:8080 -d devops/jenkins"
+  win_shell: |
+    docker create --name jenkins -p {{HTTP_PORT}}:8080 devops/jenkins;
+    docker start jenkins
   when: ansible_os_family == "Windows"

@@ -2,7 +2,7 @@
 - name: Create jenkins.yml Template
   template:
     src: jenkins.yml.j2
-    dest: "/tmp/jenkins/{{JENKINS_VERSION}}"
+    dest: "/tmp/jenkins/{{JENKINS_VERSION}}/jenkins.yml"
 
 - name: Copy Jenkins files to host/s (linux)
   copy:

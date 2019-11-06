@@ -28,7 +28,7 @@ RUN "[Net.ServicePointManager]::SecurityProtocol = 'TLS11','TLS12','ssl3'" ; \
     Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/apache-httpcomponents-client-4-api/4.5.5-3.0/apache-httpcomponents-client-4-api.hpi  -OutFile /jenkins_home/plugins/apache-httpcomponents-client-4-api.jpi ; \
     Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/bouncycastle-api/2.17/bouncycastle-api.hpi -OutFile /jenkins_home/plugins/bouncycastle-api.jpi ; \
     Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/command-launcher/1.3/command-launcher.hpi -OutFile /jenkins_home/plugins/command-launcher.jpi ; \
-    Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/credentials/2.1.18/credentials.hpi -OutFile /jenkins_home/plugins/credentials.jpi ; \
+    Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/credentials/2.3.0/credentials.hpi -OutFile /jenkins_home/plugins/credentials.jpi ; \
     Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/display-url-api/2.3.0/display-url-api.hpi  -OutFile /jenkins_home/plugins/display-url-api.jpi ; \
     Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/git/3.9.3/git.hpi -OutFile /jenkins_home/plugins/git.jpi ; \
     Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/jdk-tool/1.2/jdk-tool.hpi -OutFile /jenkins_home/plugins/jdk-tool.jpi ; \
@@ -38,7 +38,7 @@ RUN "[Net.ServicePointManager]::SecurityProtocol = 'TLS11','TLS12','ssl3'" ; \
     Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/matrix-project/1.14/matrix-project.hpi -OutFile /jenkins_home/plugins/matrix-project.jpi ; \
     Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/scm-api/2.3.0/scm-api.hpi -OutFile /jenkins_home/plugins/scm-api.jpi ; \
     Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/script-security/1.66/script-security.hpi -OutFile /jenkins_home/plugins/script-security.jpi ; \
-    Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/ssh-credentials/1.15/ssh-credentials.hpi -OutFile /jenkins_home/plugins/ssh-credentials.jpi ; \
+    Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/ssh-credentials/1.18/ssh-credentials.hpi  -OutFile /jenkins_home/plugins/ssh-credentials.jpi ; \
     Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/structs/1.17/structs.hpi -OutFile /jenkins_home/plugins/structs.jpi ; \
     Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/workflow-api/2.37/workflow-api.hpi -OutFile /jenkins_home/plugins/workflow-api.jpi ; \
     Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/workflow-scm-step/2.9/workflow-scm-step.hpi -OutFile /jenkins_home/plugins/workflow-scm-step.jpi ; \
@@ -58,8 +58,10 @@ RUN "[Net.ServicePointManager]::SecurityProtocol = 'TLS11','TLS12','ssl3'" ; \
     Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/authentication-tokens/1.3/authentication-tokens.hpi -OutFile /jenkins_home/plugins/authentication-tokens.jpi ; \
     Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/durable-task/1.33/durable-task.hpi -OutFile /jenkins_home/plugins/durable-task.jpi ; \
     Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/structs/1.20/structs.hpi -OutFile /jenkins_home/plugins/structs.jpi ; \
+    Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/plain-credentials/1.5/plain-credentials.hpi -OutFile /jenkins_home/plugins/plain-credentials.jpi ; \
+    Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/workflow-cps-global-lib/2.15/workflow-cps-global-lib.hpi -OutFile /jenkins_home/plugins/workflow-cps-global-lib.jpi ; \
+    Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/workflow-multibranch/2.21/workflow-multibranch.hpi -OutFile /jenkins_home/plugins/workflow-multibranch.jpi ; \
     Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/configuration-as-code/1.32/configuration-as-code.hpi -OutFile /jenkins_home/plugins/configuration-as-code.jpi ;
-    
 COPY jenkins.yml ${CASC_JENKINS_CONFIG}
 
 EXPOSE ${http_port}

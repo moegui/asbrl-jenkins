@@ -25,14 +25,14 @@ RUN Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Ne
 RUN choco install git -y
 
 RUN "[Net.ServicePointManager]::SecurityProtocol = 'TLS11','TLS12','ssl3'" ; \
-    Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/apache-httpcomponents-client-4-api/4.5.5-3.0/apache-httpcomponents-client-4-api.hpi  -OutFile /jenkins_home/plugins/apache-httpcomponents-client-4-api.jpi ; \
+    Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/apache-httpcomponents-client-4-api/4.5.10-2.0/apache-httpcomponents-client-4-api.hpi  -OutFile /jenkins_home/plugins/apache-httpcomponents-client-4-api.jpi ; \
     Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/bouncycastle-api/2.17/bouncycastle-api.hpi -OutFile /jenkins_home/plugins/bouncycastle-api.jpi ; \
     Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/command-launcher/1.3/command-launcher.hpi -OutFile /jenkins_home/plugins/command-launcher.jpi ; \
     Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/credentials/2.3.0/credentials.hpi -OutFile /jenkins_home/plugins/credentials.jpi ; \
     Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/display-url-api/2.3.0/display-url-api.hpi  -OutFile /jenkins_home/plugins/display-url-api.jpi ; \
     Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/git/3.9.3/git.hpi -OutFile /jenkins_home/plugins/git.jpi ; \
     Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/jdk-tool/1.2/jdk-tool.hpi -OutFile /jenkins_home/plugins/jdk-tool.jpi ; \
-    Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/jsch/0.1.55/jsch.hpi -OutFile /jenkins_home/plugins/jsch.jpi ; \
+    Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/jsch/0.1.55.1/jsch.hpi -OutFile /jenkins_home/plugins/jsch.jpi ; \
     Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/junit/1.27/junit.hpi -OutFile /jenkins_home/plugins/junit.jpi ; \
     Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/mailer/1.23/mailer.hpi -OutFile /jenkins_home/plugins/mailer.jpi ; \
     Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/matrix-project/1.14/matrix-project.hpi -OutFile /jenkins_home/plugins/matrix-project.jpi ; \

@@ -1,9 +1,4 @@
 ---
-- name: Create jenkins.yml Template
-  template:
-    src: jenkins.yml.j2
-    dest: "/tmp/jenkins/{{JENKINS_VERSION}}/jenkins.yml"
-
 - name: Copy Jenkins files to host/s (linux)
   copy:
     src: "{{JENKINS_VERSION}}"
@@ -15,6 +10,11 @@
     src: "{{JENKINS_VERSION}}"
     dest: /tmp/jenkins
   when: ansible_os_family == "Windows"
+
+- name: Create jenkins.yml Template
+  template:
+    src: jenkins.yml.j2
+    dest: "/tmp/jenkins/{{JENKINS_VERSION}}/jenkins.yml"
 
 - name: Build Jenkins CI Image in host/s (linux)
   docker_image:

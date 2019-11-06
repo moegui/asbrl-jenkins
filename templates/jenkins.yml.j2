@@ -10,7 +10,7 @@ jenkins:
       excludeClientIPFromCrumb: false
   disableRememberMe: false
   mode: NORMAL
-  numExecutors: ${EXECUTORS}
+  numExecutors: {{EXECUTORS}}
   remotingSecurity:
     enabled: true  
   primaryView:
@@ -23,9 +23,9 @@ jenkins:
       allowsSignup: false
       enableCaptcha: false
       users:
-      - id: "${ROOT_USER}"
-        password: ${ROOT_PASS}
-  slaveAgentPort: ${AGENT_PORT}
+      - id: "{{ROOT_USER}}"
+        password: {{ROOT_PASS}}
+  slaveAgentPort: {{AGENT_PORT}}
   views:
   - all:
       name: "all"
@@ -34,8 +34,8 @@ unclassified:
   gitSCM:
     createAccountBasedOnEmail: false
   location:
-    adminAddress: "${JENKINS_EMAIL}"
-    url: "${JENKINS_URL}"
+    adminAddress: "{{JENKINS_EMAIL}}"
+    url: "{{JENKINS_URL}}"
 
 security:
   apiToken:
@@ -60,27 +60,27 @@ credentials:
     domainCredentials:
     - credentials:
       - basicSSHUserPrivateKey:
-          description: "${JENKINS_SSH_NAME} SSH Key"
-          id: "${JENKINS_SSH_NAME}"
+          description: "{{JENKINS_SSH_NAME}} SSH Key"
+          id: "{{JENKINS_SSH_NAME}}"
           privateKeySource:
             directEntry:
-              privateKey: ${JENKINS_SSH_KEY}
+              privateKey: {{JENKINS_SSH_KEY}}
           scope: GLOBAL
-          username: "${JENKINS_SSH_NAME}"
+          username: "{{JENKINS_SSH_NAME}}"
       - usernamePassword:
           scope: GLOBAL
-          id: "${DOCKER_USER_NAME}"
-          username: "${DOCKER_USER_NAME}"
-          password: ${DOCKER_USER_PASS}
+          id: "{{DOCKER_USER_NAME}}"
+          username: "{{DOCKER_USER_NAME}}"
+          password: {{DOCKER_USER_PASS}}
 
 jobs:
   - script: >
-      job('${JENKINS_SEEDER}') {
+      job('{{JENKINS_SEEDER}}') {
           scm {
               git {  
                 remote {
-                    url('${GIT_SEED}')
-                    credentials('${JENKINS_SSH_NAME}')
+                    url('{{GIT_SEED}}')
+                    credentials('{{JENKINS_SSH_NAME}}')
                   }
               }
           }

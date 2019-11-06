@@ -43,23 +43,8 @@
 
 - name: Build Jenkins CI Image in host/s (windows)
   win_shell: | 
-    docker build -t devops/jenkins 	\
-    --build-arg JENKINS_HOME={{JENKINS_HOME}} \
-    --build-arg HTTP_PORT={{HTTP_PORT}} \
-    --build-arg AGENT_PORT={{AGENT_PORT}} \
-    --build-arg EXECUTORS={{EXECUTORS}} \
-    --build-arg ROOT_PASS={{ROOT_PASS}} \
-    --build-arg ROOT_USER={{ROOT_USER}} \
-    --build-arg GIT_SEED={{GIT_SEED}} \
-    --build-arg JENKINS_OPTS={{JENKINS_OPTS}} \
-    --build-arg CASC_JENKINS_CONFIG={{CASC_JENKINS_CONFIG}} \
-    --build-arg JENKINS_URL={{JENKINS_URL}} \
-    --build-arg JENKINS_EMAIL={{JENKINS_EMAIL}} \
-    --build-arg JENKINS_SEEDER={{JENKINS_SEEDER}} \
-    --build-arg JENKINS_SSH_KEY={{JENKINS_SSH_KEY}} \
-    --build-arg JENKINS_SSH_NAME={{JENKINS_SSH_NAME}} \
-    --build-arg DOCKER_USER_NAME={{DOCKER_USER_NAME}} \
-    --build-arg DOCKER_USER_PASS={{DOCKER_USER_PASS}} \
+    docker build -t devops/jenkins 
+    --build-arg JENKINS_HOME={{JENKINS_HOME}} 
     /tmp/jenkins/{{JENKINS_VERSION}}/.
   when: ansible_os_family == "Windows"
 

@@ -1,17 +1,17 @@
 ---
-- name: Copy (linux) Jenkins files to host/s
+- name: Copy Jenkins files to host/s (linux)
   copy:
     src: "{{JENKINS_VERSION}}"
     dest: /tmp/jenkins
   when: ansible_os_family != "Windows"
 
-- name: Copy (windows) Jenkins files to host/s
+- name: Copy Jenkins files to host/s (windows)
   win_copy:
     src: "{{JENKINS_VERSION}}"
     dest: /tmp/jenkins
   when: ansible_os_family == "Windows"
 
-- name: Build Jenkins CI Image in host/s
+- name: Build Jenkins CI Image in host/s (linux)
   docker_image:
     path: "/tmp/jenkins/{{JENKINS_VERSION}}"
     name: "devops/jenkins"
@@ -41,12 +41,17 @@
     pull: true
   when: ansible_os_family != "Windows"
 
-- name: Jenkins Data Volume
+- name: Build Jenkins CI Image in host/s (windows)
+  win_shell: "docker build -t devops/win-jenkins /tmp/jenkins/{{JENKINS_VERSION}}/."
+  when: ansible_os_family == "Windows"
+
+- name: Jenkins Data Volume  (linux)
   docker_volume:
     name: jenkins_home
     state: present
+  when: ansible_os_family != "Windows"
 
-- name: Creates directory
+- name: Creates directory (linux)
   file:
     path: /var/lib/docker/volumes/jenkins_home/_data/
     state: directory
@@ -55,7 +60,7 @@
     mode: 0775
   when: ansible_os_family != "Windows"
 
-- name: Jenkins
+- name: Jenkins (linux)
   docker_container:
     name: "jenkins"
     user: "{{USER|default(omit)}}"

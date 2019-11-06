@@ -72,6 +72,7 @@ RUN "[Net.ServicePointManager]::SecurityProtocol = 'TLS11','TLS12','ssl3'" ; \
     Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/pipeline-model-declarative-agent/1.1.1/pipeline-model-declarative-agent.hpi -OutFile /jenkins_home/plugins/pipeline-model-declarative-agent.jpi ; \
     Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/pipeline-model-extensions/1.4.0/pipeline-model-extensions.hpi -OutFile /jenkins_home/plugins/pipeline-model-extensions.jpi ; \
     Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/pipeline-model-api/1.4.0/pipeline-model-api.hpi -OutFile /jenkins_home/plugins/pipeline-model-api.jpi ; \
+    Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/jackson2-api/2.10.0/jackson2-api.hpi -OutFile /jenkins_home/plugins/jackson2-api.jpi ; \
     Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/configuration-as-code/1.32/configuration-as-code.hpi -OutFile /jenkins_home/plugins/configuration-as-code.jpi ;
 COPY jenkins.yml ${CASC_JENKINS_CONFIG}
 

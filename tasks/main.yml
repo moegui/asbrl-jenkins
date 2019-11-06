@@ -77,3 +77,7 @@
       - /var/run/docker.sock:/var/run/docker.sock
       - jenkins_home:{{JENKINS_HOME}}
   when: ansible_os_family != "Windows"
+
+- name: Jenkins (windows)
+  win_shell: "docker run --name jenkins -p {{HTTP_PORT}}:{{HTTP_PORT}} moegui/win-jenkins"
+  when: ansible_os_family == "Windows"

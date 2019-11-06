@@ -43,7 +43,7 @@ RUN "[Net.ServicePointManager]::SecurityProtocol = 'TLS11','TLS12','ssl3'" ; \
     Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/workflow-api/2.37/workflow-api.hpi -OutFile /jenkins_home/plugins/workflow-api.jpi ; \
     Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/workflow-scm-step/2.9/workflow-scm-step.hpi -OutFile /jenkins_home/plugins/workflow-scm-step.jpi ; \
     Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/workflow-step-api/2.20/workflow-step-api.hpi -OutFile /jenkins_home/plugins/workflow-step-api.jpi ; \
-    Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/git-client/2.7.6/git-client.hpi -OutFile /jenkins_home/plugins/git-client.jpi ; \
+    Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/git-client/3.0.0/git-client.hpi -OutFile /jenkins_home/plugins/git-client.jpi ; \
     Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/job-dsl/1.76/job-dsl.hpi -OutFile /jenkins_home/plugins/job-dsl.jpi ; \
     Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/docker-workflow/1.21/docker-workflow.hpi -OutFile /jenkins_home/plugins/docker-workflow.jpi ; \
     Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/pipeline-model-definition/1.4.0/pipeline-model-definition.hpi -OutFile /jenkins_home/plugins/pipeline-model-definition.jpi ; \

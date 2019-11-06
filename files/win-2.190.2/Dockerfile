@@ -1,35 +1,17 @@
 FROM openjdk:11.0.5-windowsservercore-1809
 
-ARG ROOT_PASS
-ARG ROOT_USER
-ARG JENKINS_HOME
-ARG HTTP_PORT
-ARG AGENT_PORT
-ARG EXECUTORS
-ARG GIT_SEED
-ARG CASC_JENKINS_CONFIG
-ARG JENKINS_URL
-ARG JENKINS_EMAIL
-ARG JENKINS_SSH_KEY
-ARG JENKINS_SSH_NAME
-ARG JENKINS_SEEDER
-ARG JENKINS_OPTS
-ARG DOCKER_USER_NAME
-ARG DOCKER_USER_PASS
-
-ENV CASC_JENKINS_CONFIG=${CASC_JENKINS_CONFIG} HTTP_PORT=${HTTP_PORT} GIT_SEED=${GIT_SEED} JENKINS_EMAIL=${JENKINS_EMAIL}
-ENV ROOT_USER=${ROOT_USER} ROOT_PASS=${ROOT_PASS} AGENT_PORT=${AGENT_PORT} EXECUTORS=${EXECUTORS} JENKINS_URL=${JENKINS_URL}
-ENV JENKINS_SSH_KEY=${JENKINS_SSH_KEY} JENKINS_SSH_NAME=${JENKINS_SSH_NAME} JENKINS_SEEDER=${JENKINS_SEEDER} JENKINS_OPTS=${JENKINS_OPTS}
-ENV DOCKER_USER_NAME=${DOCKER_USER_NAME} DOCKER_USER_PASS={DOCKER_USER_PASS}
-
 ARG JENKINS_VERSION
 ENV JENKINS_VERSION ${JENKINS_VERSION:-2.190.2}
-ARG JENKINS_DOWNLOAD_URL=https://repo.jenkins-ci.org/public/org/jenkins-ci/main/jenkins-war/${JENKINS_VERSION}/jenkins-war-${JENKINS_VERSION}.war
+ARG JENKINS_URL=https://repo.jenkins-ci.org/public/org/jenkins-ci/main/jenkins-war/${JENKINS_VERSION}/jenkins-war-${JENKINS_VERSION}.war
 ENV HOME /jenkins_home
+ARG JENKINS_HOME=\jenkins_home
+ENV JENKINS_HOME $JENKINS_HOME
 ARG http_port=8080
 ARG agent_port=50000
 ENV JENKINS_SLAVE_AGENT_PORT ${agent_port}
 ENV JAVA_OPTS=-Djenkins.install.runSetupWizard=false
+ARG CASC_JENKINS_CONFIG
+ENV CASC_JENKINS_CONFIG=${CASC_JENKINS_CONFIG}
 
 RUN mkdir \jenkins_home
 RUN mkdir \jenkins_home\workspace
@@ -38,7 +20,7 @@ RUN mkdir \jenkins_home\plugins
 COPY jenkins.yml ${CASC_JENKINS_CONFIG}
 
 RUN "[Net.ServicePointManager]::SecurityProtocol = 'TLS11','TLS12','ssl3'" ; \
-    Invoke-WebRequest -Uri ${env:JENKINS_DOWNLOAD_URL} -OutFile \jenkins_home\jenkins.war ;
+    Invoke-WebRequest -Uri ${env:JENKINS_URL} -OutFile \jenkins_home\jenkins.war ;
 
 RUN Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 
@@ -64,6 +46,9 @@ RUN "[Net.ServicePointManager]::SecurityProtocol = 'TLS11','TLS12','ssl3'" ; \
     Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/workflow-scm-step/2.7/workflow-scm-step.hpi -OutFile /jenkins_home/plugins/workflow-scm-step.hpi ; \
     Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/workflow-step-api/2.19/workflow-step-api.hpi -OutFile /jenkins_home/plugins/workflow-step-api.hpi ; \
     Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/git-client/2.7.6/git-client.hpi -OutFile /jenkins_home/plugins/git-client.hpi ; \
+    Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/job-dsl/1.76/job-dsl.hpi -OutFile /jenkins_home/plugins/job-dsl.hpi ; \
+    Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/docker-workflow/1.21/docker-workflow.hpi -OutFile /jenkins_home/plugins/docker-workflow.hpi ; \
+    Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/pipeline-model-definition/1.4.0/pipeline-model-definition.hpi -OutFile /jenkins_home/plugins/pipeline-model-definition.hpi ; \
     Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/configuration-as-code/1.32/configuration-as-code.hpi -OutFile /jenkins_home/plugins/configuration-as-code.hpi ;
     
 

@@ -1,4 +1,9 @@
 ---
+- name: Create jenkins.yml Template
+  template:
+    src: jenkins.yml
+    dest: /tmp/jenkins
+
 - name: Copy Jenkins files to host/s (linux)
   copy:
     src: "{{JENKINS_VERSION}}"
@@ -44,7 +49,7 @@
 - name: Build Jenkins CI Image in host/s (windows)
   win_shell: | 
     docker build -t devops/jenkins 
-    --build-arg JENKINS_HOME="{{JENKINS_HOME}}" 
+    --build-arg CASC_JENKINS_CONFIG="{{CASC_JENKINS_CONFIG}}" 
     /tmp/jenkins/{{JENKINS_VERSION}}/.
   when: ansible_os_family == "Windows"
 

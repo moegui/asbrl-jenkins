@@ -86,7 +86,7 @@ jobs:
           }
           steps {
               dsl {
-                  external('jenkins/jobs/*.groovy')
+                  external('win_jenkins/jobs/*.groovy')
                   removeAction('DELETE')
               }
           }

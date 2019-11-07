@@ -1,0 +1,93 @@
+jenkins:
+  agentProtocols:
+  - "JNLP4-connect"
+  - "Ping"
+  authorizationStrategy:
+    loggedInUsersCanDoAnything:
+      allowAnonymousRead: false
+  crumbIssuer:
+    standard:
+      excludeClientIPFromCrumb: false
+  disableRememberMe: false
+  mode: NORMAL
+  numExecutors: {{EXECUTORS}}
+  remotingSecurity:
+    enabled: true  
+  primaryView:
+    all:
+      name: "all"
+  quietPeriod: 5
+  scmCheckoutRetryCount: 0
+  securityRealm:
+    local:
+      allowsSignup: false
+      enableCaptcha: false
+      users:
+      - id: "{{ROOT_USER}}"
+        password: {{ROOT_PASS}}
+  slaveAgentPort: {{AGENT_PORT}}
+  views:
+  - all:
+      name: "all"
+
+unclassified:
+  gitSCM:
+    createAccountBasedOnEmail: false
+  location:
+    adminAddress: "{{JENKINS_EMAIL}}"
+    url: "{{JENKINS_URL}}"
+
+security:
+  apiToken:
+    creationOfLegacyTokenEnabled: false
+    tokenGenerationOnCreationEnabled: false
+    usageStatisticsEnabled: true
+  sSHD:
+    port: -1      
+
+tool:
+  git:
+    installations:
+    - home: "git"
+      name: "Default"
+
+credentials:
+  system:
+    domainCredentials:
+    - credentials:
+      - basicSSHUserPrivateKey:
+          description: "{{JENKINS_SSH_NAME}} SSH Key"
+          id: "{{JENKINS_SSH_NAME}}"
+          privateKeySource:
+            directEntry:
+              privateKey: ${JENKINS_SSH_KEY}
+          scope: GLOBAL
+          scope: GLOBAL
+          username: "{{JENKINS_SSH_NAME}}"
+      - usernamePassword:
+          scope: GLOBAL
+          id: "{{DOCKER_USER_NAME}}"
+          username: "{{DOCKER_USER_NAME}}"
+          password: {{DOCKER_USER_PASS}}
+
+jobs:
+  - script: >
+      job('{{JENKINS_SEEDER}}') {
+          scm {
+              git {  
+                remote {
+                    url('{{GIT_SEED}}')
+                    credentials('{{JENKINS_SSH_NAME}}')
+                  }
+              }
+          }
+          triggers {
+              scm('H/5 * * * *')
+          }
+          steps {
+              dsl {
+                  external('win_jenkins/jobs/*.groovy')
+                  removeAction('DELETE')
+              }
+          }
+      }

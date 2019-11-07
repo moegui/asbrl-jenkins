@@ -1,10 +1,23 @@
 ---
-- name: Copy Jenkins files to host/s
+- name: Copy Jenkins files to host/s (linux)
   copy:
     src: "{{JENKINS_VERSION}}"
     dest: /tmp/jenkins
+  when: ansible_os_family != "Windows"
 
-- name: Build Jenkins CI Image in host/s
+- name: Copy Jenkins files to host/s (windows)
+  win_copy:
+    src: "{{JENKINS_VERSION}}"
+    dest: /tmp/jenkins
+  when: ansible_os_family == "Windows"
+
+- name: Create jenkins.yml Template (windows)
+  template:
+    src: jenkins.yml.j2
+    dest: "/tmp/jenkins/{{JENKINS_VERSION}}/jenkins.yml"
+  when: ansible_os_family == "Windows"
+
+- name: Build Jenkins CI Image in host/s (linux)
   docker_image:
     path: "/tmp/jenkins/{{JENKINS_VERSION}}"
     name: "devops/jenkins"
@@ -32,21 +45,29 @@
     force: true
     push: false
     pull: true
+  when: ansible_os_family != "Windows"
 
-- name: Jenkins Data Volume
+- name: Build Jenkins CI Image in host/s (windows)
+  win_shell: | 
+    docker build -t devops/jenkins --build-arg CASC_JENKINS_CONFIG="{{CASC_JENKINS_CONFIG}}" /tmp/jenkins/{{JENKINS_VERSION}}/.
+  when: ansible_os_family == "Windows"
+
+- name: Jenkins Data Volume  (linux)
   docker_volume:
     name: jenkins_home
     state: present
+  when: ansible_os_family != "Windows"
 
-- name: Creates directory
+- name: Creates directory (linux)
   file:
     path: /var/lib/docker/volumes/jenkins_home/_data/
     state: directory
     owner: '1000'
     group: '1000'
     mode: 0775
+  when: ansible_os_family != "Windows"
 
-- name: Jenkins
+- name: Jenkins (linux)
   docker_container:
     name: "jenkins"
     user: "{{USER|default(omit)}}"
@@ -62,3 +83,18 @@
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - jenkins_home:{{JENKINS_HOME}}
+  when: ansible_os_family != "Windows"
+
+- name: Set JENKINS_SSH_KEY variable
+  win_environment:
+    state: present
+    name: JENKINS_SSH_KEY
+    value: "{{JENKINS_SSH_KEY}}"
+    level: user
+  when: ansible_os_family == "Windows"
+
+- name: Jenkins (windows)
+  win_shell: |
+    docker create --name jenkins -v //./pipe/docker_engine://./pipe/docker_engine -e JENKINS_SSH_KEY=$Env:JENKINS_SSH_KEY -p {{HTTP_PORT}}:8080 devops/jenkins;
+    docker start jenkins
+  when: ansible_os_family == "Windows"

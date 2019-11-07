@@ -79,6 +79,7 @@
     mac_address: "{{MAC_ADDRESS|default(omit)}}"
     env:
       TZ: "{{ TZ }}"
+      JENKINS_SSH_KEY: "{{JENKINS_SSH_KEY}}"
     restart_policy: "unless-stopped"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock

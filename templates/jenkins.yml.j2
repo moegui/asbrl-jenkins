@@ -60,8 +60,8 @@ credentials:
           id: "{{JENKINS_SSH_NAME}}"
           privateKeySource:
             directEntry:
-              privateKey: >
-                  {{JENKINS_SSH_KEY}}
+              privateKey: ${JENKINS_SSH_KEY}
+          scope: GLOBAL
           scope: GLOBAL
           username: "{{JENKINS_SSH_NAME}}"
       - usernamePassword:

@@ -87,6 +87,6 @@
 
 - name: Jenkins (windows)
   win_shell: |
-    docker create --name jenkins -p {{HTTP_PORT}}:8080 devops/jenkins;
+    docker create --name jenkins -v //./pipe/docker_engine://./pipe/docker_engine -p {{HTTP_PORT}}:8080 devops/jenkins;
     docker start jenkins
   when: ansible_os_family == "Windows"

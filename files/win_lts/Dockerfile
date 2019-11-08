@@ -1,28 +1,10 @@
-FROM openjdk:11.0.5-windowsservercore-1809
+FROM moegui/jenkins:lts-ws19-1809
 
-ARG JENKINS_VERSION
-ENV JENKINS_VERSION ${JENKINS_VERSION:-latest}
-ARG JENKINS_URL=https://updates.jenkins.io/${JENKINS_VERSION}/jenkins.war
-ENV HOME /jenkins_home
-ARG JENKINS_HOME=C:\\jenkins_home
-ENV JENKINS_HOME $JENKINS_HOME
-ARG http_port=8080
-ARG agent_port=50000
-ENV JENKINS_SLAVE_AGENT_PORT ${agent_port}
 ENV JAVA_OPTS=-Djenkins.install.runSetupWizard=false
 ARG CASC_JENKINS_CONFIG
 ENV CASC_JENKINS_CONFIG=${CASC_JENKINS_CONFIG}
 
-RUN mkdir \jenkins_home
-RUN mkdir \jenkins_home\workspace
-RUN mkdir \jenkins_home\plugins
-
-RUN "[Net.ServicePointManager]::SecurityProtocol = 'TLS11','TLS12','ssl3'" ; \
-    Invoke-WebRequest -Uri ${env:JENKINS_URL} -OutFile \jenkins_home\jenkins.war ;
-
-RUN Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
-
-RUN choco install git docker-cli -y
+RUN choco install docker-cli -y
 
 RUN "[Net.ServicePointManager]::SecurityProtocol = 'TLS11','TLS12','ssl3'" ; \
     Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/apache-httpcomponents-client-4-api/latest/apache-httpcomponents-client-4-api.hpi  -OutFile /jenkins_home/plugins/apache-httpcomponents-client-4-api.jpi ; \
@@ -76,9 +58,4 @@ RUN "[Net.ServicePointManager]::SecurityProtocol = 'TLS11','TLS12','ssl3'" ; \
     Invoke-WebRequest -Uri https://updates.jenkins.io/download/plugins/configuration-as-code/latest/configuration-as-code.hpi -OutFile /jenkins_home/plugins/configuration-as-code.jpi ;
 
 COPY jenkins.yml ${CASC_JENKINS_CONFIG}
-
-EXPOSE ${http_port}
-EXPOSE ${agent_port}
-
-CMD java -jar C:\\jenkins_home\\jenkins.war ${JAVA_OPTS}
 
